@@ -80,6 +80,8 @@ def secure_admin_logout(request):
     return JsonResponse({"success": False}, status=400)
 
 
+@login_required
+@never_cache
 def admin_dashboard(request):
     category = request.GET.get('category', 'all')
     search_query = request.POST.get('q', '').strip()
